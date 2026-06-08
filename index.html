@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sirazul Islam - Premium Interactive Portfolio</title>
+    
+    <!-- Tailwind CSS & Flowbite -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for multilingual typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Kufi+Arabic:wght@300;400;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Noto Kufi Arabic', 'sans-serif'],
+                        bangla: ['Hind Siliguri', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            950: '#030712'
+                        },
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Modern Glassmorphism & Cyberpunk glow styling */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .neon-glow-primary {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.25);
+        }
+
+        .neon-glow-amber {
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+        }
+
+        /* Smooth tab & card transition states */
+        .interactive-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .interactive-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 30px rgba(2, 132, 199, 0.15);
+        }
+
+        .dark .interactive-card:hover {
+            box-shadow: 0 20px 35px rgba(14, 165, 233, 0.15);
+        }
+
+        /* Custom Scrollbar for premium vibe */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #0284c7, #f59e0b);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans transition-colors duration-500 overflow-x-hidden selection:bg-brand-500 selection:text-white">
+
+    <!-- Interactive Neon Floating Orbs (Background Art) -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-brand-600/10 blur-[120px] pointer-events-none animate-pulse-slow"></div>
+    <div class="fixed bottom-[-15%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-amber-600/10 blur-[150px] pointer-events-none animate-pulse-slow"></div>
+    <div class="fixed top-[40%] right-[15%] w-[300px] h-[300px] rounded-full bg-emerald-500/5 blur-[100px] pointer-events-none"></div>
+
+    <!-- Multi-Language Translation Data & Logic -->
+    <script>
+        const translationDB = {
+            en: {
+                dir: 'ltr',
+                fontClass: 'font-sans',
+                navHome: 'Dashboard',
+                navAbout: 'Profile',
+                navExperience: 'Timeline',
+                navProjects: 'Portfolio',
+                navSkills: 'Competencies',
+                navPlanner: 'Project Estimator',
+                navContact: 'Connect',
+                badgeAvailable: 'Available for Immediate Transfer',
+                heroTitle: 'SIRAZUL ISLAM',
+                heroSubtitle: 'Senior Electrical & Low Current Foreman',
+                heroDesc: 'Results-driven execution specialist with 8+ years of expertise overseeing landmarks (Riyadh Metro, King Salman Air Base, MOC-HQ, luxury hotels). Designing, installing, and testing high-voltage distributions, advanced smart GRMS, KNX, DALI systems and supervising high-performance multicultural teams.',
+                btnContact: 'Get in Touch',
+                btnEstimate: 'Plan a Project',
+                statYrs: 'Years of Experience',
+                statProj: 'Major Mega Projects',
+                statHse: 'HSE Safety Standard',
+                statCerts: 'Technical Credentials',
+                aboutHeading: 'Profile Summary',
+                aboutP1: 'For nearly a decade, I have served as a critical execution supervisor on Riyadh’s most ambitious projects. I coordinate low-current setups (CCTV, ICT, Access Control, Fire Alarms) and heavy high-voltage setups (DBs, SMDBs, Earthing networks) from blueprints to final testing & handover.',
+                aboutP2: 'I focus on strict timeline optimization, premium quality compliance (IEC/SEC standards), and creating an accidents-free zone with interactive workforce training and toolbox talks.',
+                skillsHeading: 'Technical Expertise',
+                skillsSub: 'Select a category to explore certified field specialties',
+                expHeading: 'Work Timeline',
+                projHeading: 'Project Showcase',
+                projSub: 'Click categories to filter live sites',
+                all: 'All Sites',
+                catLow: 'Low Current',
+                catElec: 'Electrical Power',
+                plannerHeading: 'Interactive Project Cost & Manpower Estimator',
+                plannerSub: 'Adjust parameters below to estimate ideal workforce, supervision timeline and critical materials based on my experience.',
+                planSize: 'Project Size (Square Meters)',
+                planType: 'Primary System Needed',
+                planTypeLC: 'Low Current (ELV, GRMS, Smart Lighting)',
+                planTypeElec: 'Heavy Electrical (SMDB, Power & Cabling)',
+                planTypeBoth: 'Integrated (Electrical & Low Current combined)',
+                planUrgency: 'Requested Urgency/Timeline',
+                planUrgencyNormal: 'Standard Timeline (Optimized Cost)',
+                planUrgencyFast: 'Express Timeline (High Manpower)',
+                planResultTitle: 'Estimated Workforce Sizing',
+                planResultSub: 'Optimized according to Saudi construction specifications and HSE guidelines',
+                planForemans: 'Foremen Required',
+                planElectricians: 'Electricians Required',
+                planDays: 'Estimated Delivery Days',
+                planSafetyTip: 'Recommended Safety Audits',
+                planSafetyVal: '1 Daily Safety Audit & Toolbox Talk',
+                planMaterials: 'Required Material Focus',
+                planMaterialLC: 'UTP/Fiber Cable, Smart Panel Racks, Sensor Termination kits',
+                planMaterialElec: 'Heavy Copper Wire, SMDB/DB Boards, Isolator Switches, Earthing Rods',
+                planMaterialBoth: 'Hybrid Distribution Boards, Fibre Optic, DALI controllers & Bus cables',
+                contactHeading: 'Direct Contact Hub',
+                contactSub: 'Send a message or contact via secure direct channels',
+                cName: 'Full Name',
+                cEmail: 'Email Address',
+                cPhone: 'Phone/WhatsApp Number',
+                cMsg: 'Your Message / Inquiry',
+                cBtn: 'Send Secure Message',
+                cSuccess: 'Thank you! Your inquiry has been sent successfully.',
+                nationality: 'Nationality',
+                nationalVal: 'Bangladeshi',
+                iqama: 'Iqama Status',
+                iqamaVal: 'Valid (Transferable)',
+                license: 'Driving License',
+                licenseVal: 'Valid Private (KSA)',
+                location: 'Current Hub',
+                locationVal: 'Riyadh, Saudi Arabia'
+            },
+            bn: {
+                dir: 'ltr',
+                fontClass: 'font-bangla',
+                navHome: 'ড্যাশবোর্ড',
+                navAbout: 'প্রোফাইল',
+                navExperience: 'টাইমলাইন',
+                navProjects: 'পোর্টফোলিও',
+                navSkills: 'দক্ষতা সমূহ',
+                navPlanner: 'প্রজেক্ট প্ল্যানার',
+                navContact: 'যোগাযোগ',
+                badgeAvailable: 'অবিলম্বে ট্রান্সফার যোগ্য ইকামাসহ কাজের জন্য প্রস্তুত',
+                heroTitle: 'সিরাজুল ইসলাম',
+                heroSubtitle: 'সিনিয়র ইলেকট্রিক্যাল ও লো কারেন্ট ফোরম্যান',
+                heroDesc: '৮ বছরেরও বেশি সময় ধরে রিয়াদ মেট্রো, কিং সালমান এয়ার বেস, এবং মিনিস্ট্রি অফ কালচারের মতো মেগা প্রজেক্টে সফলতার সাথে কাজের অভিজ্ঞতাসম্পন্ন ফোরম্যান। ভারী পাওয়ার ডিস্ট্রিবিউশন গ্রিড, ডিবি/এসএমডিবি (DB/SMDB) ওয়্যারিং এবং অত্যাধুনিক গ্র্যান্ড লাইটিং কন্ট্রোল (GRMS, KNX, DALI) সিস্টেম ইনস্টলেশন ও সফল হ্যান্ডওভারের অভিজ্ঞতায় পারদর্শী।',
+                btnContact: 'সরাসরি কথা বলুন',
+                btnEstimate: 'প্রজেক্ট হিসাব করুন',
+                statYrs: 'কাজের অভিজ্ঞতা',
+                statProj: 'মেগা প্রজেক্ট সম্পন্ন',
+                statHse: 'এইচএসই (HSE) সেফটি রেকর্ড',
+                statCerts: 'কারিগরি সার্টিফিকেট',
+                aboutHeading: 'পেশাগত পরিচিতি',
+                aboutP1: 'বিগত এক দশক ধরে আমি রিয়াদের সবচেয়ে মর্যাদাপূর্ণ প্রজেক্টগুলোতে ফ্রন্টলাইন সুপারভাইজার হিসেবে কাজ করছি। সাইটের ব্লু-প্রিন্ট ড্রয়িং পড়ে সূক্ষ্মভাবে ক্যাবল ট্রাফিং, ফাইবার অপটিক কানেকশন, সিসিটিভি, ফায়ার অ্যালার্ম এবং জটিল ইলেকট্রিক্যাল ডিস্ট্রিবিউশন নেটওয়ার্ক নিখুঁতভাবে শেষ করতে আমি অভ্যস্ত।',
+                aboutP2: 'আমি সর্বদা নির্দিষ্ট সময়সীমার মধ্যে সর্বোচ্চ মান বজায় রাখতে এবং একটি দুর্ঘটনা-মুক্ত কর্মক্ষেত্র নিশ্চিত করতে দৈনিক সেফটি টুলবক্স টক (Toolbox Talk) এবং কঠোর নিরাপত্তা প্রোটোকল মেনে কাজ পরিচালনা করি।',
+                skillsHeading: 'টেকনিক্যাল দক্ষতাসমূহ',
+                skillsSub: 'সার্টিফিকেট এবং সাইট অভিজ্ঞতা দেখতে যেকোনো ক্যাটাগরি বেছে নিন',
+                expHeading: 'কর্মক্ষেত্রের টাইমলাইন',
+                projHeading: 'মেগা প্রজেক্ট প্রদর্শনী',
+                projSub: 'ক্যাটাগরি অনুযায়ী প্রজেক্ট ফিল্টার করতে ক্লিক করুন',
+                all: 'সব প্রজেক্ট',
+                catLow: 'লো কারেন্ট (ELV)',
+                catElec: 'ভারী ইলেকট্রিক্যাল',
+                plannerHeading: 'ইন্টারেক্টিভ প্রজেক্ট ও জনবল ক্যালকুলেটর',
+                plannerSub: 'আপনার প্রজেক্টের সাইজ (স্কয়ার মিটার) এবং কাজের ধরন নির্বাচন করে দেখুন আমার অভিজ্ঞতা অনুযায়ী কী পরিমাণ জনবল ও কতদিন সময় লাগতে পারে।',
+                planSize: 'প্রজেক্টের আয়তন (স্কয়ার মিটার)',
+                planType: 'কাজের মূল ক্যাটাগরি',
+                planTypeLC: 'লো কারেন্ট (ELV, GRMS, স্মার্ট লাইটিং)',
+                planTypeElec: 'ভারী ইলেকট্রিক্যাল (SMDB, মেইন পাওয়ার ও ক্যাবলিং)',
+                planTypeBoth: 'ইন্টিগ্রেটেড (ইলেক্ট্রিক্যাল ও লো কারেন্ট যৌথ)',
+                planUrgency: 'কাজের গতিসীমা / অগ্রাধিকার',
+                planUrgencyNormal: 'স্বাভাবিক গতিসীমা (সাশ্রয়ী বাজেট)',
+                planUrgencyFast: 'এক্সপ্রেস ডেলিভারি (জরুরি প্রজেক্ট - অতিরিক্ত জনবল)',
+                planResultTitle: 'অনুমিত জনবল ও পরিকল্পনা',
+                planResultSub: 'সৌদি ভিশন ২০৩০ কনস্ট্রাকশন প্রোটোকল এবং সেফটি রেগুলেশন অনুযায়ী হিসাবকৃত',
+                planForemans: 'প্রয়োজনীয় ফোরম্যান',
+                planElectricians: 'প্রয়োজনীয় টেকনিশিয়ান / ইলেক্ট্রিশিয়ান',
+                planDays: 'আনুমানিক সম্পন্ন করার দিন',
+                planSafetyTip: 'প্রয়োজনীয় সেফটি অডিট',
+                planSafetyVal: 'প্রতিদিন সকালে সেফটি অডিট এবং টুলবক্স টক আবশ্যক',
+                planMaterials: 'মূল গুরুত্বপাপ্ত ম্যাটেরিয়ালস',
+                planMaterialLC: 'ইউটিপি/ফাইবার অপটিক্যাল ক্যাবল, র্যাক প্যানেল এবং সেন্সর কিটস',
+                planMaterialElec: 'ভারী তামার ক্যাবল, এসএমডিবি/ডিবি বোর্ড, আইসোলেটর এবং আর্থিং রড',
+                planMaterialBoth: 'হাইব্রিড ডিস্ট্রিবিউশন প্যানেল, ফাইবার ক্যাবলিং এবং ডালি কন্ট্রোলার',
+                contactHeading: 'যোগাযোগের কেন্দ্রবিন্দু',
+                contactSub: 'বার্তা পাঠান অথবা সরাসরি নিচে দেওয়া লিংকে যোগাযোগ করুন',
+                cName: 'আপনার নাম',
+                cEmail: 'ইমেইল ঠিকানা',
+                cPhone: 'ফোন / হোয়াটসঅ্যাপ নম্বর',
+                cMsg: 'আপনার বার্তা / প্রজেক্টের বিস্তারিত',
+                cBtn: 'নিরাপদ বার্তা পাঠান',
+                cSuccess: 'ধন্যবাদ! আপনার বার্তাটি সফলভাবে পাঠানো হয়েছে।',
+                nationality: 'জাতীয়তা',
+                nationalVal: 'বাংলাদেশী',
+                iqama: 'ইকামা স্ট্যাটাস',
+                iqamaVal: 'বৈধ ও ট্রান্সফারেবল (Valid)',
+                license: 'ড্রাইভিং লাইসেন্স',
+                licenseVal: 'বৈধ ড্রাইভ লাইসেন্স (প্রাইভেট)',
+                location: 'বর্তমান ঠিকানা',
+                locationVal: 'রিয়াদ, সৌদি আরব'
+            },
+            ar: {
+                dir: 'rtl',
+                fontClass: 'font-arabic',
+                navHome: 'لوحة التحكم',
+                navAbout: 'الملف الشخصي',
+                navExperience: 'الخط الزمني',
+                navProjects: 'المشاريع الكبرى',
+                navSkills: 'الكفاءات الفنية',
+                navPlanner: 'مخطط المشاريع',
+                navContact: 'تواصل معي',
+                badgeAvailable: 'جاهز لنقل الكفالة والعمل الفوري',
+                heroTitle: 'سراج الإسلام',
+                heroSubtitle: 'كبير مشرفي وفورمان أعمال الكهرباء والتيار المنخفض',
+                heroDesc: 'أخصائي تنفيذ وإشراف متميز بخبرة تزيد عن 8 سنوات في توجيه مشاريع البناء الكبرى في الرياض (مترو الرياض، قاعدة الملك سلمان الجوية، وزارة الثقافة، والفنادق الفاخرة). متمكن من تمديد واختبار لوحات التوزيع الضخمة والأنظمة الذكية المتطورة GRMS, KNX, DALI وإدارة الفرق الفنية.',
+                btnContact: 'اتصل الآن',
+                btnEstimate: 'حساب تخطيط المشروع',
+                statYrs: 'سنوات الخبرة العملية',
+                statProj: 'المشاريع الكبرى المنجزة',
+                statHse: 'معدل الالتزام بالسلامة',
+                statCerts: 'الشهادات والمؤهلات الفنية',
+                aboutHeading: 'نبذة عن الملف الشخصي',
+                aboutP1: 'على مدار ما يقرب من عقد من الزمان، عملت كمشرف تنفيذ رئيسي في أكثر المشاريع طموحاً في الرياض. أقوم بتنسيق وتركيب واختبار أنظمة التيار المنخفض (كاميرات المراقبة، أنظمة الحريق، تكنولوجيا الاتصالات) والشبكات الكهربائية عالية الجهد من المخططات حتى مرحلة التسليم النهائي للمالك.',
+                aboutP2: 'ينصب تركيزي على تحسين الجداول الزمنية، والالتزام بمعايير الجودة الممتازة (مواصفات الشركة السعودية للكهرباء SEC)، وخلق بيئة عمل خالية تماماً من الحوادث من خلال التدريب الميداني اليومي ومحادثات السلامة.',
+                skillsHeading: 'الخبرات والكفاءات الفنية',
+                skillsSub: 'اختر تصنيفاً لاستكشاف التخصصات المعتمدة ميدانياً',
+                expHeading: 'السجل والخط الزمني للعمل',
+                projHeading: 'معرض المشاريع البارزة',
+                projSub: 'انقر على التصنيفات لتصفية المشاريع المباشرة',
+                all: 'كل المشاريع',
+                catLow: 'التيار المنخفض',
+                catElec: 'الطاقة والكهرباء واللوحات',
+                plannerHeading: 'مخطط وحاسب القوى العاملة التفاعلي للمشاريع',
+                plannerSub: 'اضبط المدخلات والمساحة أدناه لتقدير حجم العمالة والمدة الزمنية المطلوبة للتنفيذ بناءً على خبرتي العملية الطويلة.',
+                planSize: 'مساحة المشروع الإجمالية (متر مربع)',
+                planType: 'نظام التنفيذ المطلوب الرئيسي',
+                planTypeLC: 'التيار المنخفض (انظمة ذكية، كاميرات، إنارة)',
+                planTypeElec: 'شبكة الكهرباء واللوحات والكيابل الرئيسية',
+                planTypeBoth: 'مشروع متكامل (كهرباء وتيار منخفض معاً)',
+                planUrgency: 'السرعة والجدول المخطط له',
+                planUrgencyNormal: 'المسار العادي الطبيعي (تكلفة محسنة وموزونة)',
+                planUrgencyFast: 'المسار السريع العاجل (عمالة مضاعفة وإنجاز سريع)',
+                planResultTitle: 'تقدير حجم العمالة والمواد',
+                planResultSub: 'تم الحساب بدقة وفقاً للمواصفات القياسية السعودية وتعليمات الدفاع المدني والسلامة',
+                planForemans: 'مشرفين / فورمان مطلوبين',
+                planElectricians: 'فنيين / كهربائيين مطلوبين',
+                planDays: 'الأيام التقريبية للتسليم النهائي',
+                planSafetyTip: 'عمليات تدقيق السلامة الموصى بها',
+                planSafetyVal: 'إجراء فحص أمان يومي واجتماع سلامة صباحي إلزامي قبل البدء',
+                planMaterials: 'التركيز الأساسي على المواد والتركيبات',
+                planMaterialLC: 'كابلات الفايبر والشبكات، لوحات التحكم الذكية، واطقم التوصيل الدقيقة للحساسات',
+                planMaterialElec: 'كابلات النحاس الضخمة، لوحات التوزيع والـ SMDB، مفاتيح الفصل وقضبان التأريض',
+                planMaterialBoth: 'اللوحات الهجينة المتكاملة، كوابل الفايبر والاتصالات، منظمات DALI وكابلات التحكم الذكية',
+                contactHeading: 'بوابة الاتصال المباشر',
+                contactSub: 'أرسل رسالة فورية أو تواصل مباشرة عبر القنوات الرسمية المعتمدة أدناه',
+                cName: 'الاسم الكامل',
+                cEmail: 'البريد الإلكتروني الرسمي',
+                cPhone: 'رقم الهاتف المباشر / واتساب',
+                cMsg: 'تفاصيل رسالتك أو استفسارك',
+                cBtn: 'إرسال الرسالة بشكل آمن',
+                cSuccess: 'نشكرك على تواصلك! تم إرسال رسالتك وتفاصيل استفسارك بنجاح.',
+                nationality: 'الجنسية',
+                nationalVal: 'بنغلاديشي',
+                iqama: 'حالة الإقامة للعمل',
+                iqamaVal: 'سارية وقابلة لنقل الكفالة فوراً',
+                license: 'رخصة القيادة بالمملكة',
+                licenseVal: 'رخصة قيادة خصوصي سارية',
+                location: 'المقر الحالي',
+                locationVal: 'الرياض، المملكة العربية السعودية'
+            }
+        };
+
+        let activeLang = 'bn'; // Initialize in Bangla as requested by user
+
+        function switchLanguage(lang) {
+            activeLang = lang;
+            const t = translationDB[lang];
+            
+            // Set text directions and global fonts
+            document.documentElement.setAttribute('dir', t.dir);
+            document.documentElement.className = `scroll-smooth ${t.fontClass}`;
+            
+            // Bulk replace elements with [data-t]
+            document.querySelectorAll('[data-t]').forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (t[key]) {
+                    el.innerHTML = t[key];
+                }
+            });
+
+            // Handle specific placeholders
+            const nameInput = document.getElementById('form-name');
+            const emailInput = document.getElementById('form-email');
+            const phoneInput = document.getElementById('form-phone');
+            const msgInput = document.getElementById('form-message');
+            if (nameInput) nameInput.placeholder = t.cName;
+            if (emailInput) emailInput.placeholder = t.cEmail;
+            if (phoneInput) phoneInput.placeholder = t.cPhone;
+            if (msgInput) msgInput.placeholder = t.cMsg;
+
+            // Highlight language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.className = "lang-btn px-3 py-1.5 rounded-xl bg-gradient-to-r from-brand-500 to-sky-600 text-white font-bold text-xs shadow-md shadow-brand-500/20 transition-all";
+                } else {
+                    btn.className = "lang-btn px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold text-xs transition-all";
+                }
+            });
+
+            // Re-render components with localized text
+            renderDynamicProjects();
+            renderDynamicTimeline();
+            calculateProjectEstimates();
+        }
+    </script>
+
+    <!-- Glowing Cyber Glass Top Navigation Header -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-800/80 shadow-xl transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Animated Brand Logo -->
+            <div class="flex items-center space-x-3 rtl:space-x-reverse group">
+                <div class="relative w-12 h-12 rounded-xl bg-gradient-to-br from-brand-500 via-sky-600 to-amber-500 flex items-center justify-center shadow-lg shadow-brand-500/20 group-hover:rotate-12 transition-all duration-300 overflow-hidden">
+                    <img src="https://i.postimg.cc/wxDSTXS8/file-0000000066dc720aa0e4ad0c66ed77fe.jpg" alt="Sirazul Islam" class="w-full h-full object-cover object-top">
+                    <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500"></span>
+                    </span>
+                </div>
+                <div class="hidden sm:block">
+                    <span class="block text-lg font-black tracking-tight text-white bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-400">SIRAZUL ISLAM</span>
+                    <span class="block text-[10px] text-brand-400 font-extrabold tracking-widest uppercase">ELV & ELECTRICAL EXPERT</span>
+                </div>
+            </div>
+
+            <!-- Dashboard Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-1 rtl:space-x-reverse text-sm font-semibold">
+                <a href="#about" class="px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/40 rounded-xl transition-all" data-t="navAbout">Profile</a>
+                <a href="#experience" class="px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/40 rounded-xl transition-all" data-t="navExperience">Timeline</a>
+                <a href="#projects" class="px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/40 rounded-xl transition-all" data-t="navProjects">Portfolio</a>
+                <a href="#skills" class="px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/40 rounded-xl transition-all" data-t="navSkills">Competencies</a>
+                <a href="#planner" class="px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/40 rounded-xl transition-all" data-t="navPlanner">Project Estimator</a>
+                <a href="#contact" class="px-4 py-2 bg-gradient-to-r from-brand-600 to-sky-600 text-white hover:from-brand-500 hover:to-sky-500 rounded-xl transition-all shadow-md shadow-brand-600/10" data-t="navContact">Connect</a>
+            </nav>
+
+            <!-- Multilingual Swapper + Actions -->
+            <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                <!-- Custom Modern Language Switcher -->
+                <div class="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800">
+                    <button onclick="switchLanguage('bn')" data-lang="bn" class="lang-btn px-3 py-1.5 rounded-xl text-xs transition-all">বাং</button>
+                    <button onclick="switchLanguage('en')" data-lang="en" class="lang-btn px-3 py-1.5 rounded-xl text-xs transition-all">EN</button>
+                    <button onclick="switchLanguage('ar')" data-lang="ar" class="lang-btn px-3 py-1.5 rounded-xl text-xs transition-all">عرب</button>
+                </div>
+                
+                <!-- Toggle Mobile Navigation -->
+                <button onclick="toggleSidebarMenu()" class="lg:hidden p-2.5 rounded-xl bg-slate-850 border border-slate-800 text-slate-300 hover:text-white">
+                    <i class="fa-solid fa-bars-staggered text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dynamic Mobile Menu overlay panel -->
+        <div id="mobile-sidebar" class="hidden lg:hidden border-t border-slate-800/80 bg-slate-950 p-4 space-y-2 animate-fade-in">
+            <a href="#about" onclick="toggleSidebarMenu()" class="block px-4 py-3 text-sm font-semibold text-slate-300 hover:bg-slate-900 rounded-xl" data-t="navAbout">Profile</a>
+            <a href="#experience" onclick="toggleSidebarMenu()" class="block px-4 py-3 text-sm font-semibold text-slate-300 hover:bg-slate-900 rounded-xl" data-t="navExperience">Timeline</a>
+            <a href="#projects" onclick="toggleSidebarMenu()" class="block px-4 py-3 text-sm font-semibold text-slate-300 hover:bg-slate-900 rounded-xl" data-t="navProjects">Portfolio</a>
+            <a href="#skills" onclick="toggleSidebarMenu()" class="block px-4 py-3 text-sm font-semibold text-slate-300 hover:bg-slate-900 rounded-xl" data-t="navSkills">Competencies</a>
+            <a href="#planner" onclick="toggleSidebarMenu()" class="block px-4 py-3 text-sm font-semibold text-slate-300 hover:bg-slate-900 rounded-xl" data-t="navPlanner">Project Estimator</a>
+            <a href="#contact" onclick="toggleSidebarMenu()" class="block px-4 py-3 text-sm font-semibold text-center bg-gradient-to-r from-brand-600 to-sky-600 rounded-xl text-white" data-t="navContact">Connect</a>
+        </div>
+    </header>
+
+    <!-- Super Visual Cyber Hero Dashboard -->
+    <section class="relative pt-8 pb-20 md:py-28 overflow-hidden bg-gradient-to-b from-slate-950 to-slate-900">
+        
+        <!-- Abstract glowing circuit grid lines (background) -->
+        <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Profile Identity Info Cards (Left) -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left rtl:lg:text-right">
+                    
+                    <div class="inline-flex items-center space-x-2 rtl:space-x-reverse px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-black animate-pulse-slow">
+                        <i class="fa-solid fa-circle-check text-green-500"></i>
+                        <span data-t="badgeAvailable">Available for Immediate Transfer</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-none">
+                        <span class="block bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-brand-400" data-t="heroTitle">
+                            SIRAZUL ISLAM
+                        </span>
+                    </h1>
+                    
+                    <h2 class="text-lg sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 font-sans" data-t="heroSubtitle">
+                        Senior Electrical & Low Current Foreman
+                    </h2>
+                    
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0 font-sans" data-t="heroDesc">
+                        Results-driven execution specialist with 8+ years of expertise overseeing landmarks (Riyadh Metro, King Salman Air Base, MOC-HQ, luxury hotels). Designing, installing, and testing high-voltage distributions, advanced smart GRMS, KNX, DALI systems and supervising high-performance multicultural teams.
+                    </p>
+
+                    <!-- Profile Snapshot Details Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+                        <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-lg text-center lg:text-left rtl:lg:text-right">
+                            <span class="block text-[10px] text-slate-500 font-extrabold uppercase" data-t="nationality">Nationality</span>
+                            <span class="font-bold text-slate-200 text-xs sm:text-sm" data-t="nationalVal">Bangladeshi</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-lg text-center lg:text-left rtl:lg:text-right">
+                            <span class="block text-[10px] text-slate-500 font-extrabold uppercase" data-t="iqama">Iqama Status</span>
+                            <span class="font-bold text-slate-200 text-xs sm:text-sm" data-t="iqamaVal">Valid (Transferable)</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-lg text-center lg:text-left rtl:lg:text-right">
+                            <span class="block text-[10px] text-slate-500 font-extrabold uppercase" data-t="license">Driving License</span>
+                            <span class="font-bold text-slate-200 text-xs sm:text-sm" data-t="licenseVal">Valid Private (KSA)</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-lg text-center lg:text-left rtl:lg:text-right">
+                            <span class="block text-[10px] text-slate-500 font-extrabold uppercase" data-t="location">Current Hub</span>
+                            <span class="font-bold text-slate-200 text-xs sm:text-sm" data-t="locationVal">Riyadh, Saudi Arabia</span>
+                        </div>
+                    </div>
+
+                    <!-- Direct Fast Action Triggers -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#contact" class="px-8 py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-brand-600 via-sky-600 to-amber-500 hover:opacity-90 shadow-xl shadow-brand-500/20 transition-all flex items-center group">
+                            <span data-t="btnContact">Get in Touch</span>
+                            <i class="fa-solid fa-arrow-right ml-2 mr-2 group-hover:translate-x-1.5 transition-transform"></i>
+                        </a>
+                        <a href="#planner" class="px-8 py-4 rounded-2xl font-bold text-slate-300 bg-slate-900 hover:bg-slate-850 hover:text-white border border-slate-800 shadow-xl transition-all flex items-center">
+                            <i class="fa-solid fa-gears mr-2 ml-2 text-amber-500"></i>
+                            <span data-t="btnEstimate">Plan a Project</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Epic Glowing 3D Portrait Frame (Right) -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-[400px] md:h-[400px]">
+                        
+                        <!-- Premium Interactive Rotating Neon Ring -->
+                        <div class="absolute inset-[-12px] rounded-[36px] bg-gradient-to-tr from-brand-500 via-sky-500 to-amber-500 opacity-80 blur-lg animate-pulse"></div>
+                        <div class="absolute inset-[-2px] rounded-[30px] border-2 border-brand-400/50 animate-spin-slow"></div>
+                        
+                        <!-- Main Frame Container -->
+                        <div class="absolute inset-0 rounded-[28px] overflow-hidden bg-slate-900 border-4 border-slate-950 shadow-2xl flex flex-col justify-end group">
+                            
+                            <!-- Main High Quality Cropped Portrait Picture -->
+                            <img src="https://i.postimg.cc/4dx87CYS/Sirazul-Islam-zooel.png" alt="Sirazul Islam" class="w-full h-full object-cover object-top filter contrast-[1.05] brightness-[1.02] transition-all duration-700 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop'">
+                            
+                            <!-- Interactive overlay panel inside portrait -->
+                            <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-slate-950/90 border border-slate-800/80 backdrop-blur-md">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-[10px] text-brand-400 font-extrabold tracking-widest uppercase">Senior Foreman</p>
+                                        <p class="text-sm font-black text-white">Riyadh Metro & Air Base</p>
+                                    </div>
+                                    <div class="flex space-x-1.5 rtl:space-x-reverse">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-ping"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Glowing Interactive Live Stats Bar -->
+    <section class="py-12 bg-slate-950 border-y border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-brand-500/40 text-center transition-colors group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <span class="block text-3xl font-black text-white">8+</span>
+                    <span class="text-xs text-slate-500 font-bold uppercase tracking-wider" data-t="statYrs">Years of Experience</span>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-brand-500/40 text-center transition-colors group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-city"></i>
+                    </div>
+                    <span class="block text-3xl font-black text-white">6+</span>
+                    <span class="text-xs text-slate-500 font-bold uppercase tracking-wider" data-t="statProj">Major Mega Projects</span>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-amber-500/40 text-center transition-colors group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-helmet-safety"></i>
+                    </div>
+                    <span class="block text-3xl font-black text-white">100%</span>
+                    <span class="text-xs text-slate-500 font-bold uppercase tracking-wider" data-t="statHse">HSE Safety Standard</span>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-brand-500/40 text-center transition-colors group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-2xl mx-auto mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <span class="block text-3xl font-black text-white">4+</span>
+                    <span class="text-xs text-slate-500 font-bold uppercase tracking-wider" data-t="statCerts">Technical Credentials</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Summary Section -->
+    <section id="about" class="py-20 md:py-28 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Modern Interactive Graphics (Left) -->
+                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                    <div class="p-6 rounded-2xl bg-slate-950 border border-slate-800 hover:border-brand-500/40 transition-colors group">
+                        <i class="fa-solid fa-plug text-2xl text-brand-400 mb-2 block"></i>
+                        <span class="block font-bold text-white text-sm">Electrical Grid</span>
+                        <span class="block text-[10px] text-slate-500">DB/SMDB, Isolators & Earthing</span>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-950 border border-slate-800 hover:border-amber-500/40 transition-colors group">
+                        <i class="fa-solid fa-wifi text-2xl text-amber-500 mb-2 block"></i>
+                        <span class="block font-bold text-white text-sm">ELV / Low Current</span>
+                        <span class="block text-[10px] text-slate-500">CCTV, ICT, Fire Alarm, PAGA</span>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-950 border border-slate-800 hover:border-brand-500/40 transition-colors group">
+                        <i class="fa-solid fa-microchip text-2xl text-brand-400 mb-2 block"></i>
+                        <span class="block font-bold text-white text-sm">Smart Controls</span>
+                        <span class="block text-[10px] text-slate-500">DALI, KNX & GRMS Systems</span>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-950 border border-slate-800 hover:border-amber-500/40 transition-colors group">
+                        <i class="fa-solid fa-clipboard-user text-2xl text-amber-500 mb-2 block"></i>
+                        <span class="block font-bold text-white text-sm">HSE Supervision</span>
+                        <span class="block text-[10px] text-slate-500">Zero Accident site culture</span>
+                    </div>
+                </div>
+
+                <!-- Profile summary paragraph (Right) -->
+                <div class="lg:col-span-7 space-y-6">
+                    <h2 class="text-3xl font-extrabold text-white" data-t="aboutHeading">Profile Summary</h2>
+                    <div class="h-1 w-20 bg-gradient-to-r from-brand-500 to-sky-600 rounded"></div>
+                    
+                    <p class="text-slate-300 leading-relaxed font-sans text-sm sm:text-base" data-t="aboutP1">
+                        For nearly a decade, I have served as a critical execution supervisor on Riyadh’s most ambitious projects. I coordinate low-current setups (CCTV, ICT, Access Control, Fire Alarms) and heavy high-voltage setups (DBs, SMDBs, Earthing networks) from blueprints to final testing & handover.
+                    </p>
+                    <p class="text-slate-400 leading-relaxed font-sans text-sm sm:text-base" data-t="aboutP2">
+                        I focus on strict timeline optimization, premium quality compliance (IEC/SEC standards), and creating an accidents-free zone with interactive workforce training and toolbox talks.
+                    </p>
+
+                    <!-- Interactive Quick Contacts -->
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="tel:+966535200293" class="flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-slate-300 hover:text-white transition-colors">
+                            <i class="fa-solid fa-phone text-brand-400"></i>
+                            <span class="text-xs font-bold">+966 535 200 293</span>
+                        </a>
+                        <a href="mailto:mdzooel02@gmail.com" class="flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-slate-300 hover:text-white transition-colors">
+                            <i class="fa-solid fa-envelope text-brand-400"></i>
+                            <span class="text-xs font-bold">mdzooel02@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Competencies / Skill Board -->
+    <section id="skills" class="py-20 md:py-28 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-3xl font-extrabold text-white" data-t="skillsHeading">Technical Expertise</h2>
+                <p class="text-slate-400 max-w-xl mx-auto text-sm" data-t="skillsSub">Select a category to explore certified field specialties</p>
+                <div class="h-1 w-20 bg-brand-500 mx-auto rounded"></div>
+            </div>
+
+            <!-- Modern Toggle Skill Tabs -->
+            <div class="flex justify-center space-x-2 rtl:space-x-reverse mb-10">
+                <button onclick="setActiveSkillTab('all')" id="tab-btn-all" class="skill-tab-btn px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-brand-600 text-white shadow-lg transition-all">All Skills</button>
+                <button onclick="setActiveSkillTab('elv')" id="tab-btn-elv" class="skill-tab-btn px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-slate-900 text-slate-400 hover:text-white transition-all">Low Current / ELV</button>
+                <button onclick="setActiveSkillTab('power')" id="tab-btn-power" class="skill-tab-btn px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-slate-900 text-slate-400 hover:text-white transition-all">Electrical Power</button>
+                <button onclick="setActiveSkillTab('mgnt')" id="tab-btn-mgnt" class="skill-tab-btn px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-slate-900 text-slate-400 hover:text-white transition-all">Supervision</button>
+            </div>
+
+            <!-- Skills Dynamic Presentation Area -->
+            <div id="skills-display-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Skill Card 1 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card" data-skill-cat="elv">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-xl mb-4">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">CCTV & Surveillance</h3>
+                    <p class="text-xs text-slate-500">Installation, networking, camera mounting, and server control room configuration.</p>
+                </div>
+                <!-- Skill Card 2 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card" data-skill-cat="elv">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-xl mb-4">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Fire Alarm Systems</h3>
+                    <p class="text-xs text-slate-500">Analog, Addressable fire loops, Smoke sensor cabling, and FM-200 clean agent panels.</p>
+                </div>
+                <!-- Skill Card 3 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card" data-skill-cat="elv">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl mb-4">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">GRMS Lighting Control</h3>
+                    <p class="text-xs text-slate-500">Guest Room Management, KNX, DALI smart automation routing, termination, and testing.</p>
+                </div>
+                <!-- Skill Card 4 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card" data-skill-cat="elv">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-xl mb-4">
+                        <i class="fa-solid fa-cable-car"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Fiber & UTP Cabling</h3>
+                    <p class="text-xs text-slate-500">High speed structured cabling, multi-mode fibre pulling, and server rack terminal connections.</p>
+                </div>
+
+                <!-- Skill Card 5 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card" data-skill-cat="power">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl mb-4">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">DB & SMDB Installation</h3>
+                    <p class="text-xs text-slate-500">Mounting, complete panel routing, busbar setup, and complex single-line drawing execution.</p>
+                </div>
+                <!-- Skill Card 6 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card" data-skill-cat="power">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-xl mb-4">
+                        <i class="fa-solid fa-car-battery"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">UPS & Emergency Backup</h3>
+                    <p class="text-xs text-slate-500">Critical continuous power supplies layout, transfer switches installation, and earthing setups.</p>
+                </div>
+                <!-- Skill Card 7 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card" data-skill-cat="power">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-xl mb-4">
+                        <i class="fa-solid fa-arrows-down-to-people"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Earthing & Grounding</h3>
+                    <p class="text-xs text-slate-500">Copper rods insertion, ground resistance testing, and safety bonding net layouts.</p>
+                </div>
+
+                <!-- Skill Card 8 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card" data-skill-cat="mgnt">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl mb-4">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Workforce Supervision</h3>
+                    <p class="text-xs text-slate-500">Directing multi-national electricians, daily target planning, and material estimations.</p>
+                </div>
+                <!-- Skill Card 9 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card" data-skill-cat="mgnt">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-xl mb-4">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">HSE Safety Leadership</h3>
+                    <p class="text-xs text-slate-500">Executing daily Toolbox Talks, heights safety equipment checking, and strict hazard prevention.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Work Timeline -->
+    <section id="experience" class="py-20 md:py-28 bg-slate-900 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-3xl font-extrabold text-white" data-t="expHeading">Work Timeline</h2>
+                <div class="h-1 w-20 bg-brand-500 mx-auto rounded"></div>
+            </div>
+
+            <!-- Dynamic interactive vertical line timeline -->
+            <div id="timeline-host" class="relative border-l-2 border-slate-800 rtl:border-l-0 rtl:border-r-2 rtl:pr-8 pl-8 space-y-12">
+                <!-- Injected via javascript dynamically -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Filterable Mega Projects Gallery -->
+    <section id="projects" class="py-20 md:py-28 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center space-y-4 mb-12">
+                <h2 class="text-3xl font-extrabold text-white" data-t="projHeading">Project Showcase</h2>
+                <p class="text-slate-400 max-w-xl mx-auto text-sm" data-t="projSub">Click categories to filter live sites</p>
+                <div class="h-1 w-20 bg-amber-500 mx-auto rounded"></div>
+            </div>
+
+            <!-- Live Filtering Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="setProjectFilter('all')" id="filter-all" class="proj-filter-btn px-6 py-2.5 rounded-full text-xs font-bold bg-brand-600 text-white shadow-lg shadow-brand-500/10 transition-all" data-t="all">All Sites</button>
+                <button onclick="setProjectFilter('lowcurrent')" id="filter-lowcurrent" class="proj-filter-btn px-6 py-2.5 rounded-full text-xs font-bold bg-slate-900 text-slate-400 hover:text-white transition-all" data-t="catLow">Low Current</button>
+                <button onclick="setProjectFilter('electrical')" id="filter-electrical" class="proj-filter-btn px-6 py-2.5 rounded-full text-xs font-bold bg-slate-900 text-slate-400 hover:text-white transition-all" data-t="catElec">Electrical Power</button>
+            </div>
+
+            <!-- Premium Projects Grid -->
+            <div id="projects-render-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Rendered dynamically -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ADVANCED USER FEATURE: Interactive Project Planning Estimator -->
+    <section id="planner" class="py-20 md:py-28 bg-slate-900 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center space-y-4 mb-12">
+                <div class="inline-flex p-3 rounded-full bg-brand-500/10 text-brand-400 text-2xl mb-2">
+                    <i class="fa-solid fa-calculator"></i>
+                </div>
+                <h2 class="text-3xl font-black text-white" data-t="plannerHeading">Interactive Project Cost & Manpower Estimator</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-xs sm:text-sm leading-relaxed" data-t="plannerSub">Adjust parameters below to estimate ideal workforce, supervision timeline and critical materials based on my experience.</p>
+                <div class="h-1 w-24 bg-gradient-to-r from-brand-500 to-amber-500 mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Inputs Section (Left Card) -->
+                <div class="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-slate-950 border border-slate-800 flex flex-col justify-between">
+                    
+                    <div class="space-y-6">
+                        <!-- Project Size Slider -->
+                        <div>
+                            <div class="flex justify-between text-xs font-extrabold text-slate-400 uppercase mb-2">
+                                <span data-t="planSize">Project Size (Square Meters)</span>
+                                <span id="size-val" class="text-brand-400 text-sm">2,500 m²</span>
+                            </div>
+                            <input type="range" id="plan-range-size" min="500" max="15000" value="2500" step="250" oninput="calculateProjectEstimates()" class="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-500">
+                            <div class="flex justify-between text-[10px] text-slate-600 font-extrabold mt-1">
+                                <span>500 m²</span>
+                                <span>5,000 m²</span>
+                                <span>10,000 m²</span>
+                                <span>15,000 m²</span>
+                            </div>
+                        </div>
+
+                        <!-- System selection dropdown -->
+                        <div>
+                            <label class="block text-xs font-extrabold text-slate-400 uppercase mb-2" data-t="planType">Primary System Needed</label>
+                            <select id="plan-system-type" onchange="calculateProjectEstimates()" class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 focus:border-brand-500 focus:outline-none text-sm">
+                                <option value="lowcurrent" data-t="planTypeLC">Low Current (ELV, GRMS, Smart Lighting)</option>
+                                <option value="electrical" data-t="planTypeElec">Heavy Electrical (SMDB, Power & Cabling)</option>
+                                <option value="both" selected data-t="planTypeBoth">Integrated (Electrical & Low Current combined)</option>
+                            </select>
+                        </div>
+
+                        <!-- Project Urgency level -->
+                        <div>
+                            <label class="block text-xs font-extrabold text-slate-400 uppercase mb-2" data-t="planUrgency">Requested Urgency/Timeline</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="setPlanUrgency('normal')" id="urgency-normal" class="px-4 py-3 rounded-xl border border-brand-500 bg-brand-500/10 text-white font-extrabold text-xs transition-all" data-t="planUrgencyNormal">Standard Timeline</button>
+                                <button onclick="setPlanUrgency('fast')" id="urgency-fast" class="px-4 py-3 rounded-xl border border-slate-800 bg-slate-900 text-slate-400 font-extrabold text-xs transition-all" data-t="planUrgencyFast">Express Timeline</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Safety Standard Warning Alert Badge -->
+                    <div class="mt-8 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-start space-x-3 rtl:space-x-reverse">
+                        <i class="fa-solid fa-triangle-exclusion text-amber-500 text-lg mt-0.5"></i>
+                        <div>
+                            <span class="block text-xs font-black text-white" data-t="planSafetyTip">Recommended Safety Audits</span>
+                            <p class="text-[11px] text-slate-400 mt-0.5" data-t="planSafetyVal">1 Daily Safety Audit & Toolbox Talk</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Live Outputs Card Display (Right Card) -->
+                <div class="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-slate-950 border border-slate-800 flex flex-col justify-between relative overflow-hidden">
+                    
+                    <!-- Decorative light beam effect on result card -->
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/10 rounded-full blur-2xl"></div>
+                    
+                    <div class="relative z-10 space-y-6">
+                        <div>
+                            <h3 class="text-xl font-extrabold text-white" data-t="planResultTitle">Estimated Workforce Sizing</h3>
+                            <p class="text-xs text-slate-500 mt-1" data-t="planResultSub">Optimized according to Saudi construction specifications and HSE guidelines</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Foreman Display -->
+                            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 text-center">
+                                <span class="block text-xs text-slate-500 font-bold uppercase" data-t="planForemans">Foremen Required</span>
+                                <span id="result-foreman" class="block text-3xl font-black text-brand-400 mt-1">2</span>
+                            </div>
+                            <!-- Electrician Display -->
+                            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 text-center">
+                                <span class="block text-xs text-slate-500 font-bold uppercase" data-t="planElectricians">Electricians Required</span>
+                                <span id="result-electrician" class="block text-3xl font-black text-brand-400 mt-1">10</span>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-850">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-400 font-bold uppercase" data-t="planDays">Estimated Delivery Days</span>
+                                <span id="result-days" class="text-2xl font-black text-amber-500">45 Days</span>
+                            </div>
+                        </div>
+
+                        <!-- Recommended Material list dynamically updated -->
+                        <div class="p-4 rounded-2xl bg-slate-900/40 border border-slate-800">
+                            <span class="block text-xs text-slate-500 font-bold uppercase mb-2" data-t="planMaterials">Required Material Focus</span>
+                            <p id="result-materials" class="text-xs text-slate-300 leading-relaxed font-sans">Cable pulling accessories, SMDB distributions, earthing pins, smart lights.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-900 text-center lg:text-left rtl:lg:text-right">
+                        <a href="#contact" class="inline-flex items-center space-x-2 rtl:space-x-reverse text-xs font-bold text-brand-400 hover:text-white transition-all">
+                            <span>Request quote for this specific configuration</span>
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Academic Education & Technical Training Details -->
+    <section id="education" class="py-20 md:py-28 bg-slate-950">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-3xl font-extrabold text-white" data-t="eduTitle">Education & Professional Training</h2>
+                <div class="h-1 w-20 bg-brand-500 mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Training Card 1 (UCEP) -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card flex items-start space-x-4 rtl:space-x-reverse">
+                    <span class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-2xl flex-shrink-0">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </span>
+                    <div>
+                        <span class="text-xs font-bold text-brand-400">12-Month Technical Training</span>
+                        <h3 class="font-extrabold text-white mt-1" data-t="tradeTitle">Electrical & Electronic Control Trade</h3>
+                        <p class="text-xs text-slate-500 mt-1">UCEP Bangladesh (Mirpur Technical School), Dhaka</p>
+                        <p class="text-xs text-slate-400 mt-2 font-sans" data-t="tradeDesc">Advanced industrial automation & electronic systems operations.</p>
+                    </div>
+                </div>
+
+                <!-- Training Card 2 (German TTC) -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card flex items-start space-x-4 rtl:space-x-reverse">
+                    <span class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 text-2xl flex-shrink-0">
+                        <i class="fa-solid fa-certificate"></i>
+                    </span>
+                    <div>
+                        <span class="text-xs font-bold text-amber-500">350 Hours (6 Months)</span>
+                        <h3 class="font-extrabold text-white mt-1" data-t="wiringTitle">National Skill Standard - Basic (Electrical House Wiring)</h3>
+                        <p class="text-xs text-slate-500 mt-1">Bangladesh-German Technical Training Centre, Dhaka</p>
+                        <p class="text-xs text-slate-400 mt-2 font-sans" data-t="wiringDesc">High-quality house wiring layout, earthing, standard industrial connections.</p>
+                    </div>
+                </div>
+
+                <!-- Academic Certificate 1 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card flex items-start space-x-4 rtl:space-x-reverse">
+                    <span class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-500 text-2xl flex-shrink-0">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </span>
+                    <div>
+                        <h3 class="font-extrabold text-white" data-t="hsc">Higher School Certificate (HSC)</h3>
+                        <p class="text-xs text-slate-500 mt-1" data-t="hscInst">Noakhali Government College, Noakhali, Bangladesh</p>
+                    </div>
+                </div>
+
+                <!-- Academic Certificate 2 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 interactive-card flex items-start space-x-4 rtl:space-x-reverse">
+                    <span class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-500 text-2xl flex-shrink-0">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </span>
+                    <div>
+                        <h3 class="font-extrabold text-white" data-t="ssc">Secondary School Certificate (SSC)</h3>
+                        <p class="text-xs text-slate-500 mt-1" data-t="sscInst">Baluchara I.M High School, Noakhali, Bangladesh</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Super Visual Contact Hub with Form -->
+    <section id="contact" class="py-20 md:py-28 bg-slate-900 border-t border-slate-850">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Direct Cards Info (Left) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h2 class="text-3xl font-extrabold text-white" data-t="contactHeading">Direct Contact Hub</h2>
+                    <div class="h-1 w-20 bg-brand-500 rounded"></div>
+                    <p class="text-slate-400 text-sm" data-t="contactSub">Send a message or contact via secure direct channels</p>
+
+                    <div class="space-y-4 pt-4">
+                        <a href="https://wa.me/966535200293" target="_blank" class="flex items-center space-x-4 rtl:space-x-reverse p-4 rounded-2xl border border-slate-800 bg-slate-950 hover:border-green-500/50 transition-all text-slate-300">
+                            <span class="w-12 h-12 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center text-2xl">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </span>
+                            <div>
+                                <strong class="block text-white text-sm">Direct WhatsApp Chat</strong>
+                                <span class="text-xs text-slate-400">+966 535 200 293</span>
+                            </div>
+                        </a>
+
+                        <a href="tel:+966535200293" class="flex items-center space-x-4 rtl:space-x-reverse p-4 rounded-2xl border border-slate-800 bg-slate-950 hover:border-brand-500/50 transition-all text-slate-300">
+                            <span class="w-12 h-12 bg-brand-500/10 text-brand-400 rounded-full flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            <div>
+                                <strong class="block text-white text-sm">Direct Voice Call</strong>
+                                <span class="text-xs text-slate-400">+966 535 200 293</span>
+                            </div>
+                        </a>
+
+                        <a href="mailto:mdzooel02@gmail.com" class="flex items-center space-x-4 rtl:space-x-reverse p-4 rounded-2xl border border-slate-800 bg-slate-950 hover:border-amber-500/50 transition-all text-slate-300">
+                            <span class="w-12 h-12 bg-amber-500/10 text-amber-500 rounded-full flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                            <div>
+                                <strong class="block text-white text-sm">Official Corporate Email</strong>
+                                <span class="text-xs text-slate-400">mdzooel02@gmail.com</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Custom Interactive Contact Form Panel (Right) -->
+                <div class="lg:col-span-7 p-8 rounded-3xl bg-slate-950 border border-slate-800 shadow-2xl relative overflow-hidden">
+                    <form id="premium-contact-form" onsubmit="submitFormTrigger(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-500 uppercase mb-2">Name</label>
+                                <input type="text" id="form-name" required class="w-full px-4 py-3.5 rounded-xl border border-slate-800 bg-slate-900 focus:border-brand-500 focus:outline-none text-white text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-500 uppercase mb-2">Email</label>
+                                <input type="email" id="form-email" required class="w-full px-4 py-3.5 rounded-xl border border-slate-800 bg-slate-900 focus:border-brand-500 focus:outline-none text-white text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-2">Phone</label>
+                            <input type="text" id="form-phone" class="w-full px-4 py-3.5 rounded-xl border border-slate-800 bg-slate-900 focus:border-brand-500 focus:outline-none text-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-2">Message</label>
+                            <textarea id="form-message" rows="4" required class="w-full px-4 py-3.5 rounded-xl border border-slate-800 bg-slate-900 focus:border-brand-500 focus:outline-none text-white text-sm"></textarea>
+                        </div>
+                        
+                        <button type="submit" id="form-submit-btn" class="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-brand-600 to-sky-600 hover:from-brand-500 hover:to-sky-500 shadow-lg shadow-brand-500/10 transition-all uppercase text-xs tracking-widest" data-t="cBtn">
+                            Send Secure Message
+                        </button>
+                    </form>
+
+                    <!-- Beautiful interactive alert box -->
+                    <div id="form-alert" class="hidden mt-4 p-4 rounded-2xl text-center text-xs font-bold bg-green-500/10 border border-green-500/20 text-green-400">
+                        <i class="fa-solid fa-circle-check mr-2"></i>
+                        <span data-t="cSuccess">Thank you! Your inquiry has been sent successfully.</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bottom Footer -->
+    <footer class="bg-slate-950 text-slate-500 py-16 border-t border-slate-900 text-center space-y-4">
+        <h2 class="block text-5xl font-black text-white">Thank You</h2>
+        <p class="text-base text-slate-400">Ready for the next Landmark Project.</p>
+        <p class="text-[10px] text-slate-600">&copy; 2026 Sirazul Islam. Riyadh, Saudi Arabia. All rights reserved.</p>
+    </footer>
+
+    <!-- Interactive JS Functionality & Databasing -->
+    <script>
+        // Toggle mobile sidebar view
+        function toggleSidebarMenu() {
+            const sidebar = document.getElementById('mobile-sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+
+        // Active Skill Tab filter
+        function setActiveSkillTab(cat) {
+            document.querySelectorAll('.skill-tab-btn').forEach(btn => {
+                btn.className = "skill-tab-btn px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-slate-900 text-slate-400 hover:text-white transition-all";
+            });
+            const activeBtn = document.getElementById(`tab-btn-${cat}`);
+            if (activeBtn) {
+                activeBtn.className = "skill-tab-btn px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-brand-600 text-white shadow-lg transition-all";
+            }
+
+            // Filter individual items
+            document.querySelectorAll('[data-skill-cat]').forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-skill-cat') === cat) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Project filtering logic
+        let currentFilter = 'all';
+        function setProjectFilter(cat) {
+            currentFilter = cat;
+            document.querySelectorAll('.proj-filter-btn').forEach(btn => {
+                btn.className = "proj-filter-btn px-6 py-2.5 rounded-full text-xs font-bold bg-slate-900 text-slate-400 hover:text-white transition-all";
+            });
+            const activeBtn = document.getElementById(`filter-${cat}`);
+            if (activeBtn) {
+                activeBtn.className = "proj-filter-btn px-6 py-2.5 rounded-full text-xs font-bold bg-brand-600 text-white shadow-lg shadow-brand-500/10 transition-all";
+            }
+            renderDynamicProjects();
+        }
+
+        // Project Database (3 Languages)
+        const projectDB = {
+            en: [
+                { title: 'Faena Hotel', subtitle: 'Riyadh Vision Development', type: 'lowcurrent', icon: 'fa-hotel', desc: 'Managed integration of highly advanced GRMS and fiber-to-the-room ICT deployments.' },
+                { title: 'King Salman Air Base', subtitle: 'Military Defense Infrastructure', type: 'electrical', icon: 'fa-plane', desc: 'Headed high-grade airfield power distributions, safety grounding nets & DB upgrades.' },
+                { title: 'MOC-HQ (Diriyah Gate)', subtitle: 'Ministry of Culture HQ', type: 'electrical', icon: 'fa-building-columns', desc: 'Execution of complete power infrastructure layouts and precision earthing designs.' },
+                { title: 'Riyadh Metro (L4 Depot)', subtitle: 'Samsung C&T Megaproject', type: 'electrical', icon: 'fa-train-subway', desc: 'Direct operations supervision for lighting systems, heavy cable routing & control layout installs.' },
+                { title: 'Misk School Campus', subtitle: 'Modern Elite Institution', type: 'lowcurrent', icon: 'fa-school', desc: 'Integration of smart panels, clean classroom controls, and safety earthing alignments.' },
+                { title: 'Hotel Al Faisaliah', subtitle: 'Operational Refurbishment', type: 'electrical', icon: 'fa-bed', desc: 'Upgraded live distribution setups and executed luxury interior lighting integration seamlessly.' }
+            ],
+            bn: [
+                { title: 'ফেনা হোটেল প্রজেক্ট', subtitle: 'লাক্সারি হসপিটালিটি', type: 'lowcurrent', icon: 'fa-hotel', desc: 'উন্নত প্রযুক্তির গেস্ট রুম ম্যানেজমেন্ট সিস্টেম (GRMS) এবং আইসিটি অপটিক্যাল ফাইবার নেটওয়ার্ক স্থাপন তদারকি।' },
+                { title: 'কিং সালমান এয়ার বেস', subtitle: 'ডিফেন্স মেগা প্রজেক্ট', type: 'electrical', icon: 'fa-plane', desc: 'এয়ারবেসের জন্য উচ্চ-নিরাপত্তা সম্পন্ন পাওয়ার নেটওয়ার্ক, প্রধান বিতরণ প্যানেল এবং গ্রাউন্ডিং সিস্টেম।' },
+                { title: 'সংস্কৃতি মন্ত্রণালয় হেডকোয়ার্টার', subtitle: 'দিরিয়া গেট ডেভেলপমেন্ট', type: 'electrical', icon: 'fa-building-columns', desc: 'পাওয়ার ও মিডিয়াম ভোল্টেজ সিস্টেমের ক্যাবলিং, প্যানেল কানেকশন এবং নিখুঁত আর্দিং সিস্টেম।' },
+                { title: 'রিয়াদ মেট্রো (L4 Depot)', subtitle: 'স্যামসাং সিএন্ডটি মেগাপ্রজেক্ট', type: 'electrical', icon: 'fa-train-subway', desc: 'মেট্রো রেল ডিপোর পুরো পাওয়ার ডিস্ট্রিবিউশন, হেভি ক্যাবল রুট স্থাপন এবং লাইটিং ফিক্সচার।' },
+                { title: 'মিস্ক স্কুল ক্যাম্পাস', subtitle: 'ঐতিহাসিক শিক্ষাপ্রতিষ্ঠান', type: 'lowcurrent', icon: 'fa-school', desc: 'স্মার্ট ক্লাসরুম লাইটিং কন্ট্রোল, পাওয়ার ওয়্যারিং এবং সেফটি আর্থিং এর নিখুঁত প্রয়োগ।' },
+                { title: 'হোটেল আল ফয়সারিয়া', subtitle: 'রিফারবিশমেন্ট প্রজেক্ট', type: 'electrical', icon: 'fa-bed', desc: '৫-তারকা সচল হোটেল পরিবেশের ভেতরে থেকে নির্বিঘ্নে লাক্সারি প্যানেল বোর্ড আপগ্রেড এবং লাইটিং পরিবর্তন।' }
+            ],
+            ar: [
+                { title: 'فندق فاينا الفاخر', subtitle: 'قطاع الضيافة الراقية', type: 'lowcurrent', icon: 'fa-hotel', desc: 'إدارة وتكامل نظام إدارة غرف الضيوف الذكي GRMS وشبكات الألياف البصرية المتطورة.' },
+                { title: 'قاعدة الملك سلمان الجوية', subtitle: 'مشاريع الدفاع والبنية التحتية', type: 'electrical', icon: 'fa-plane', desc: 'قيادة تمديدات الطاقة الكهربائية الحيوية، وشبكات التأريض السلامة للإنشاءات الجوية العسكرية.' },
+                { title: 'مقر وزارة الثقافة (بوابة الدرعية)', subtitle: 'المقرات والمراكز الحكومية والأثرية', type: 'electrical', icon: 'fa-building-columns', desc: 'تنفيذ أعمال تمديد كابلات الطاقة والجهد المتوسط والتأريض لمركز القيادة الرئيسي.' },
+                { title: 'مستودع مترو الرياض (L4)', subtitle: 'مشروع مترو الرياض العملاق سامسونج', type: 'electrical', icon: 'fa-train-subway', desc: 'إشراف ميداني مباشر على أنظمة إنارة مستودعات القطار وسحب الكابلات الضخمة وإنهاء غرف التحكم.' },
+                { title: 'مجمع مدارس مسك المرموق', subtitle: 'مرافق تكنولوجية لمدارس النخبة', type: 'lowcurrent', icon: 'fa-school', desc: 'تركيب أنظمة الإنارة الذكية بالفصول وتكامل لوحات الكهرباء لبيئة مدرسية آمنة.' },
+                { title: 'تجديد فندق الفيصلية الفاخر', subtitle: 'مشاريع الفنادق التشغيلية القائمة', type: 'electrical', icon: 'fa-bed', desc: 'إعادة هيكلة وتطوير لوحات التوزيع الفرعية والإنارات الداخلية الفاخرة بطرق آمنة وبدون تأثير على نزلاء الفندق.' }
+            ]
+        };
+
+        function renderDynamicProjects() {
+            const grid = document.getElementById('projects-render-grid');
+            grid.innerHTML = '';
+            
+            const list = projectDB[activeLang];
+            list.forEach(p => {
+                if (currentFilter === 'all' || p.type === currentFilter) {
+                    const card = document.createElement('div');
+                    card.className = "p-6 rounded-3xl bg-slate-900 border border-slate-800 interactive-card flex flex-col justify-between";
+                    card.innerHTML = `
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="w-12 h-12 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-2xl">
+                                    <i class="fa-solid ${p.icon}"></i>
+                                </span>
+                                <span class="text-[9px] uppercase font-bold tracking-widest text-slate-500 bg-slate-950 px-2.5 py-1 rounded-full border border-slate-800/80">${p.type}</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-black text-white">${p.title}</h3>
+                                <p class="text-xs text-amber-500 font-bold">${p.subtitle}</p>
+                            </div>
+                            <p class="text-xs text-slate-400 leading-relaxed font-sans">${p.desc}</p>
+                        </div>
+                        <div class="pt-6 border-t border-slate-800/40 mt-4 flex items-center justify-between">
+                            <span class="text-[10px] text-slate-500 font-extrabold uppercase">Handover Complete</span>
+                            <i class="fa-solid fa-circle-check text-green-500 text-xs"></i>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                }
+            });
+        }
+
+        // Work Timeline Database (3 Languages)
+        const timelineDB = {
+            en: [
+                { role: 'Low Current Foreman', duration: 'Jan 2026 - Present', company: 'BUJV', desc: 'Faena Hotel Project (Riyadh)', details: 'Supervising high-end GRMS lighting controls, fiber optic structure cabling, panel terminations & daily safety HSE reporting.' },
+                { role: 'Electrical Foreman', duration: 'Mar 2025 - Dec 2025', company: 'NAS JV', desc: 'King Salman Air Base (Riyadh)', details: 'Headed high-grade airfield distribution grids, earthing nets, SMDB installations and military safety adherence.' },
+                { role: 'Electrician', duration: 'Dec 2023 - Nov 2024', company: 'MAN ENTERPRISE', desc: 'MOC-HQ Project (Diriyah Gate)', details: 'Cable pulling, terminal grounding and panels installation under the Ministry of Culture headquarters development.' },
+                { role: 'Electrical Foreman', duration: 'Feb 2022 - Aug 2023', company: 'Samsung C&T', desc: 'Riyadh Metro L4 Depot Project', details: 'Directly supervised metro terminal lighting layouts, heavy voltage systems alignment and QC clearance operations.' }
+            ],
+            bn: [
+                { role: 'লো কারেন্ট ফোরম্যান', duration: 'জানুয়ারি ২০২৬ - বর্তমান', company: 'BUJV', desc: 'ফেনা হোটেল প্রজেক্ট (রিয়াদ)', details: 'জিআরএমএস (GRMS) স্মার্ট লাইটিং, ফাইবার ক্যাবল নেটওয়ার্কিং, সার্ভার র্যাক কানেকশন তদারকি এবং সেফটি রিপোর্টিং।' },
+                { role: 'ইলেকট্রিক্যাল ফোরম্যান', duration: 'মার্চ ২০২৫ - ডিসেম্বর ২০২৫', company: 'NAS JV', desc: 'কিং সালমান এয়ার বেস প্রজেক্ট', details: 'মিলিটারি এয়ার ফিল্ডের মেইন পাওয়ার গ্রিড, হেভি ক্যাবল ওয়্যারিং, এসএমডিবি (SMDB) প্যানেল বোর্ড ও আর্থিং সেটআপ।' },
+                { role: 'ইলেক্ট্রিশিয়ান', duration: 'ডিসেম্বর ২০২৩ - নভেম্বর ২০২৪', company: 'MAN ENTERPRISE', desc: 'মিনিস্ট্রি অফ কালচার হেডকোয়ার্টার (MOC-HQ)', details: 'ডিজাইন ড্রয়িং অনুযায়ী ক্যাবল টার্মিনেশন, ট্রাফ রুট স্থাপন এবং প্যানেল কমিশনিং কারিগরি সহায়তা।' },
+                { role: 'ইলেকট্রিক্যাল ফোরম্যান', duration: 'ফেব্রুয়ারি ২০২২ - আগস্ট ২০২৩', company: 'Samsung C&T', desc: 'রিয়াদ মেট্রো প্রজেক্ট - এল৪ ডিপো', details: 'মেট্রো রেল ডিপো লাইটিং, হেভি ভোল্টেজ ক্যাবল টানা এবং কোয়ালিটি কন্ট্রোল ক্লিয়ারেন্স।' }
+            ],
+            ar: [
+                { role: 'فورمان تيار منخفض', duration: 'يناير 2026 - حتى الآن', company: 'BUJV', desc: 'مشروع فندق فاينا الفاخر بالرياض', details: 'الإشراف على تركيبات كاميرات المراقبة، ونظام الألياف البصرية المتطورة، وإنهاء لوحات التحكم الذكية للغرف.' },
+                { role: 'فورمان أعمال كهربائية', duration: 'مارس 2025 - ديسمبر 2025', company: 'NAS JV', desc: 'مشروع قاعدة الملك سلمان الجوية', details: 'قيادة تمديدات الطاقة وحفر الأرضي لشبكة الطيران، وتوصيل لوحات SMDB تحت نظام جودة عسكري صارم.' },
+                { role: 'فني كهرباء فني تركيب', duration: 'ديسمبر 2023 - نوفمبر 2024', company: 'MAN ENTERPRISE', desc: 'مقر وزارة الثقافة (بوابة الدرعية)', details: 'سحب الكابلات وتأسيس مسارات الكهرباء المعتمدة تحت إشراف هيئة تطوير بوابة الدرعية.' },
+                { role: 'فورمان كهرباء', duration: 'فبراير 2022 - أغسطس 2023', company: 'Samsung C&T', desc: 'مستودع مترو الرياض - الخط الرابع L4', details: 'الإشراف المباشر على إنارة مرافق المترو، وتلافي ملاحظات فحص الجودة وتسليم الموقع في المواعيد المحددة.' }
+            ]
+        };
+
+        function renderDynamicTimeline() {
+            const host = document.getElementById('timeline-host');
+            host.innerHTML = '';
+            
+            const list = timelineDB[activeLang];
+            list.forEach((item, index) => {
+                const row = document.createElement('div');
+                row.className = "relative pl-8 rtl:pl-0 rtl:pr-8 animate-fade-in";
+                row.innerHTML = `
+                    <span class="absolute top-1.5 left-[-9px] rtl:left-auto rtl:right-[-9px] w-4 h-4 rounded-full bg-amber-500 border-4 border-slate-900 shadow-md"></span>
+                    <div class="space-y-1">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                            <h3 class="text-lg font-black text-white">${item.role}</h3>
+                            <span class="inline-block px-3 py-1 rounded-full bg-slate-950 border border-slate-800 text-xs font-bold text-brand-400 mt-1 sm:mt-0">${item.duration}</span>
+                        </div>
+                        <p class="text-xs text-slate-300 font-bold flex items-center">
+                            <i class="fa-solid fa-building text-brand-500 mr-1.5 ml-1.5 text-[10px]"></i>
+                            ${item.company} &nbsp;|&nbsp; <span class="text-slate-400">${item.desc}</span>
+                        </p>
+                        <p class="text-xs text-slate-400 font-sans pt-1 leading-relaxed">${item.details}</p>
+                    </div>
+                `;
+                host.appendChild(row);
+            });
+        }
+
+        // PROJECT COST & MANPOWER ESTIMATOR CALCULATOR LOGIC
+        let activeUrgency = 'normal';
+        function setPlanUrgency(u) {
+            activeUrgency = u;
+            const btnNormal = document.getElementById('urgency-normal');
+            const btnFast = document.getElementById('urgency-fast');
+            if (u === 'normal') {
+                btnNormal.className = "px-4 py-3 rounded-xl border border-brand-500 bg-brand-500/10 text-white font-extrabold text-xs transition-all";
+                btnFast.className = "px-4 py-3 rounded-xl border border-slate-800 bg-slate-900 text-slate-400 font-extrabold text-xs transition-all";
+            } else {
+                btnFast.className = "px-4 py-3 rounded-xl border border-amber-500 bg-amber-500/10 text-white font-extrabold text-xs transition-all";
+                btnNormal.className = "px-4 py-3 rounded-xl border border-slate-800 bg-slate-900 text-slate-400 font-extrabold text-xs transition-all";
+            }
+            calculateProjectEstimates();
+        }
+
+        function calculateProjectEstimates() {
+            const size = parseInt(document.getElementById('plan-range-size').value);
+            const systemType = document.getElementById('plan-system-type').value;
+            
+            // Output display indicators
+            document.getElementById('size-val').innerText = `${size.toLocaleString()} m²`;
+
+            // Calculate ratios base on Sirazul Islam's realistic field experience
+            let foremanRatio = 2000; // sqm per foreman
+            let electricianRatio = 400; // sqm per electrician
+            let baseDurationDays = 30; // base days for 1000 sqm
+
+            if (systemType === 'electrical') {
+                foremanRatio = 1800;
+                electricianRatio = 350;
+                baseDurationDays = 35;
+            } else if (systemType === 'both') {
+                foremanRatio = 1500;
+                electricianRatio = 250;
+                baseDurationDays = 45;
+            }
+
+            let numForemen = Math.max(1, Math.ceil(size / foremanRatio));
+            let numElectricians = Math.max(2, Math.ceil(size / electricianRatio));
+            let finalDays = Math.ceil((size / 1000) * baseDurationDays / numForemen);
+
+            // Handle speed factor/urgency overrides
+            if (activeUrgency === 'fast') {
+                numElectricians = Math.ceil(numElectricians * 1.5);
+                numForemen = Math.ceil(numForemen * 1.3);
+                finalDays = Math.ceil(finalDays * 0.65);
+            }
+
+            // Boundary adjustments for display looks
+            finalDays = Math.max(15, Math.min(220, finalDays));
+
+            // Set final results to DOM
+            document.getElementById('result-foreman').innerText = numForemen;
+            document.getElementById('result-electrician').innerText = numElectricians;
+            
+            // Locale specific day representation
+            const dayTranslation = activeLang === 'bn' ? 'দিন' : (activeLang === 'ar' ? 'يوم' : 'Days');
+            document.getElementById('result-days').innerText = `${finalDays} ${dayTranslation}`;
+
+            // Update materials list dynamically
+            const matEl = document.getElementById('result-materials');
+            const materialKeys = {
+                lowcurrent: 'planMaterialLC',
+                electrical: 'planMaterialElec',
+                both: 'planMaterialBoth'
+            };
+            const currentTextKey = materialKeys[systemType];
+            matEl.innerText = translationDB[activeLang][currentTextKey];
+        }
+
+        // Contact form mock submission
+        function submitFormTrigger(e) {
+            e.preventDefault();
+            const btn = document.getElementById('form-submit-btn');
+            const alertBox = document.getElementById('form-alert');
+            
+            btn.disabled = true;
+            btn.innerText = translationDB[activeLang].sending || 'Sending...';
+
+            setTimeout(() => {
+                alertBox.classList.remove('hidden');
+                document.getElementById('premium-contact-form').reset();
+                btn.disabled = false;
+                btn.innerText = translationDB[activeLang].cBtn;
+                
+                // Hide alert after some duration
+                setTimeout(() => {
+                    alertBox.classList.add('hidden');
+                }, 4000);
+            }, 1200);
+        }
+
+        // Handle initial load setup
+        window.onload = function() {
+            switchLanguage('bn'); // Default to beautiful Bangla layout
+        }
+    </script>
+
+</body>
+</html>
